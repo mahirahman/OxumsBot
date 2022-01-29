@@ -1,0 +1,25 @@
+{
+  "name": "oxumsbot",
+  "version": "1.0.0",
+  "description": "Open Source Rust Utility Bot for Discord",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahirahman/OxumsBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahirahman/OxumsBot/issues"
+  },
+  "homepage": "https://github.com/mahirahman/OxumsBot#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^14.3.2"
+  }
+}
