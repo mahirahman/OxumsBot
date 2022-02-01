@@ -33,14 +33,13 @@ client.on('messageCreate', (message) => {
     // Messages from bot exits function
     // No such command exists
     if (!message.content.startsWith('!') || message.author.bot || !client.commands.has(commandName)) return;
-    
+
     // Command object from collection
     const command = client.commands.get(commandName);
     // Execute command
     try {
         command.execute(message);
-    }
-    catch (error) {
+    } catch (error) {
         console.error(error);
         message.reply('There was an error with the command. Please MSG $TAREX#9952 on discord for assistance!');
     }
