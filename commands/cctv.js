@@ -1,4 +1,10 @@
-// !cctv command will reply with a list of all the camera codes in the game.
+module.exports = {
+    name: 'cctv',
+    description: '!cctv command will reply with a list of all the camera codes in the game.',
+    execute(message) {
+        message.channel.send('The camera codes are: XXX');
+    },
+};
 
 // Small Oil Rig
 // OILRIG1L1
