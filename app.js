@@ -15,12 +15,9 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', (message) => {
-    if (message.content === 'hi') {
-        message.reply({
-            content: 'Hello',
-        });
+    if (message.content.toLowerCase() === '!test') {
+        message.channel.send('TEST COMMAND!');
     }
 });
-
 
 client.login(process.env.TOKEN);
