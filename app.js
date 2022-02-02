@@ -14,6 +14,7 @@ const client = new Discord.Client({
 // Check if bot is working
 client.on('ready', () => {
     console.log('This bot is online!');
+    client.user.setActivity('Oxums | !oxhelp', { type: 'PLAYING' })
 });
 
 client.commands = new Discord.Collection();
