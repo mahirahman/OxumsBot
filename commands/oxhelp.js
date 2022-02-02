@@ -20,7 +20,7 @@ module.exports = {
         // Array of all command names
         const commandName = commandFiles.map( commandName => (commandName).replace('.js',''));
 
-        // Commands that require adminisrator permissions
+        // Commands that require administrator permissions
         const adminCommands = ['setup', 'setupdates'];
 
         // Commands that require arguments
