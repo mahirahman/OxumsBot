@@ -1,10 +1,5 @@
 const Discord = require('discord.js');
-const cctv = require('./cctv.js');
-const force = require('./force.js');
-const map = require('./map.js');
-const server = require('./server.js');
-const setup = require('./setup.js');
-const setupdates = require('./setupdates.js');
+const fs = require('fs');
 
 module.exports = {
     name: 'oxhelp',
@@ -13,51 +8,41 @@ module.exports = {
 
         // Default embed message properties
         let title = 'Commands List';
-        let description = '';
-        let field = [{ name: ':grey_question: Info', value: '``!oxhelp``'}, { name: ':wrench: Utility', value: '``!cctv``, ``!force``, ``!map``, ``!server``'}, { name: ':gear: Settings', value: '``!setup``, ``!setupdates``'}];
+        let description = 'Prefix for all commands is **!**';
+        let field = [
+            { name: ':grey_question: Info', value: '``oxhelp``'}, 
+            { name: ':wrench: Utility', value: '``cctv``, ``force``, ``map``, ``server``'}, 
+            { name: ':gear: Settings', value: '``setup``, ``setupdates``'}
+        ];
+
+        // Array of all command files
+        const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+        // Array of all command names
+        const commandName = commandFiles.map( commandName => (commandName).replace('.js',''));
+
+        // Commands that require adminisrator permissions
+        const adminCommands = ['setup', 'setupdates'];
+
+        // Commands that require arguments
+        const argsCommands = {
+            setup: '<battlemetrics-id>'
+        };
 
         // Based on command name, the properties of the embed message will change.
         if (args.length) {
-            switch (args[0]) {
-                case 'oxhelp':
-                    title = 'oxhelp';
-                    description = this.description;
-                    field = [{ name: 'Usage', value: '``!oxhelp``'}, { name: 'Permission Required', value: '``None``'}];
-                    break;
-                case 'cctv':
-                    title = 'cctv';
-                    description = cctv.description;
-                    field = [{ name: 'Usage', value: '``!cctv``'}, { name: 'Permission Required', value: '``None``'}];
-                    break;
-                case 'force':
-                    title = 'force';
-                    description = force.description;
-                    field = [{ name: 'Usage', value: '``!force``'}, { name: 'Permission Required', value: '``None``'}];
-                    break;
-                case 'map':
-                    title = 'map';
-                    description = map.description;
-                    field = [{ name: 'Usage', value: '``!map``'}, { name: 'Permission Required', value: '``None``'}];
-                    break;
-                case 'server':
-                    title = 'server';
-                    description = server.description;
-                    field = [{ name: 'Usage', value: '``!server``'}, { name: 'Permission Required', value: '``None``'}];
-                    break;
-                case 'setup':
-                    title = 'setup';
-                    description = setup.description;
-                    field = [{ name: 'Usage', value: '``!setup <battlemetris-id>``'}, { name: 'Permission Required', value: '``Administrator``'}];
-                    break;
-                case 'setupdates':
-                    title = 'setupdates';
-                    description = setupdates.description;
-                    field = [{ name: 'Usage', value: '``!setupdates``'}, { name: 'Permission Required', value: '``Administrator``'}];
-                    break;
-                default:
-                    return message.reply('The command does not exist. Please use !oxhelp to see all available commands.');
+            if (commandName.includes(args[0])) {
+                title = args[0];
+                description = require(`./${args[0]}.js`).description;
+                field = [
+                    { name: 'Usage', value: (argsCommands[args[0]] != undefined ? `\`\`!${args[0]} ${argsCommands[args[0]]}\`\`` : `\`\`!${args[0]}\`\``)}, 
+                    { name: 'Permissions Required', value: (adminCommands.includes(args[0]) ? '``Administrator``' : '``None``')}
+                ];
+            }
+            else {
+                return message.reply('The command does not exist. Please use !oxhelp to see all available commands.');
             }
         }
+
         const embed = new Discord.MessageEmbed()
         .setColor('#0099ff')
         .setAuthor({ name: title, iconURL: 'https://raw.githubusercontent.com/mahirahman/OxumsBot/main/icons/logo.png'})
