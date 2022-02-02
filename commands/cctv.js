@@ -15,27 +15,17 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
         .setColor('#0099ff')
-        .setThumbnail('./icons/cctv.png')
+        .setThumbnail('https://raw.githubusercontent.com/mahirahman/OxumsBot/main/icons/cctv.png')
         .setTitle('Monument CCTV Codes')
         .setFooter({text: "Note: All CCTV Codes are Case Sensitive"})
         .addFields(
-            { name: 'Small Oil Rig', value: '> XXX'},
-            { name: 'Large Oil Rig', value: '> XXX'},
-            { name: 'Airfield', value: '> XXX'},
-            { name: 'Dome', value: '> XXX'},
-            { name: 'Bandit Camp', value: '> XXX'},
-            { name: 'Outpost', value: '> XXX'}
+            { name: 'Small Oil Rig', value: smallOil.map( code => `> ${code}`).join("\n")},
+            { name: 'Large Oil Rig', value: largeOil.map( code => `> ${code}`).join("\n")},
+            { name: 'Airfield', value: airfield.map( code => `> ${code}`).join("\n")},
+            { name: 'Dome', value: dome.map( code => `> ${code}`).join("\n")},
+            { name: 'Bandit Camp', value: bandit.map( code => `> ${code}`).join("\n")},
+            { name: 'Outpost', value: outpost.map( code => `> ${code}`).join("\n")}
         )
-        
         return message.channel.send({embeds: [embed]});
     },
 };
-
-// Check all CCTV CODES ARE LEGIT
-// ADD THUMBNAIL
-
-// Small Oil Rig
-// OILRIG1EXHAUST ???
-
-// Airfield
-// AIRFIELDGARAGE ???
