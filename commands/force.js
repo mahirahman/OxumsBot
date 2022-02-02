@@ -12,7 +12,7 @@ module.exports = {
 
         // The force time is 11 AM PST or 5 AM AEST etc
         // This value needs to be hardcoded based on the location of the system this bot is running on
-        FORCE_TIME = '5:0:00';
+        FORCE_TIME = '6:0:00';
         timeUntilForce = dhms(moment(FORCE_TIME, 'HH:mm:ss').diff(moment(getCurrentTime(), 'HH:mm:ss')));
 
         const embed = new Discord.MessageEmbed()
