@@ -4,7 +4,7 @@ const force = require('./force.js');
 const map = require('./map.js');
 const server = require('./server.js');
 const setup = require('./setup.js');
-const setupdates = require('./setupupdates.js');
+const setupdates = require('./setupdates.js');
 
 module.exports = {
     name: 'oxhelp',
@@ -47,7 +47,7 @@ module.exports = {
                 case 'setup':
                     title = 'setup';
                     description = setup.description;
-                    field = [{ name: 'Usage', value: '``!setup``'}, { name: 'Permission Required', value: '``Administrator``'}];
+                    field = [{ name: 'Usage', value: '``!setup <battlemetris-id>``'}, { name: 'Permission Required', value: '``Administrator``'}];
                     break;
                 case 'setupdates':
                     title = 'setupdates';
