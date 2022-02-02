@@ -3,7 +3,11 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'cctv',
     description: '!cctv command will reply with a list of all the camera codes in the game.',
-    execute(message) {
+    execute(message, args) {
+
+        if (args.length) {
+            return message.reply(`This command does not take any arguments. Please use !cctv to see the list of all camera codes.`);
+        }
 
         // All Monument CCTV codes
         const smallOil = ['OILRIG1L1', 'OILRIG1L2', 'OILRIG1L3', 'OILRIG1L4', 'OILRIG1DOCK', 'OILRIG1HELI'];

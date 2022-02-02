@@ -27,19 +27,20 @@ for (const file of commandFiles) {
 }
 
 client.on('messageCreate', (message) => {
+    // Get the arguments of a command
+    const args = message.content.slice(1).trim().split(' ');
     // Get the command name without prefix '!'
-    const commandName = message.content.slice(1).toLowerCase();
-
+    const commandName = args.shift().toLowerCase();
     // Message does not start with '!' prefix
     // Messages from bot exits function
     // No such command exists
     if (!message.content.startsWith('!') || message.author.bot || !client.commands.has(commandName)) return;
-
+    
     // Command object from collection
     const command = client.commands.get(commandName);
     // Execute command
     try {
-        command.execute(message);
+        command.execute(message, args)
     } catch (error) {
         console.error(error);
         message.reply('There was an error with the command. Please MSG $TAREX#9952 on discord for assistance!');
