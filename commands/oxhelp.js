@@ -34,7 +34,7 @@ module.exports = {
                 title = args[0];
                 description = require(`./${args[0]}.js`).description;
                 field = [
-                    { name: 'Usage', value: (argsCommands[args[0]] != undefined ? `\`\`!${args[0]} ${argsCommands[args[0]]}\`\`` : `\`\`!${args[0]}\`\``)}, 
+                    { name: 'Usage', value: `\`\`!${args[0]}` + (argsCommands[args[0]] != undefined ? ` ${argsCommands[args[0]]}\`\`` : `\`\``)}, 
                     { name: 'Permissions Required', value: (adminCommands.includes(args[0]) ? '``Administrator``' : '``None``')}
                 ];
             }
