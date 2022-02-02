@@ -55,7 +55,7 @@ module.exports = {
                     field = [{ name: 'Usage', value: '``!setupdates``'}, { name: 'Permission Required', value: '``Administrator``'}];
                     break;
                 default:
-                    return message.reply(`The command ${args[0]} does not exist. Please use !oxhelp to see all available commands.`);
+                    return message.reply('The command does not exist. Please use !oxhelp to see all available commands.');
             }
         }
         const embed = new Discord.MessageEmbed()
