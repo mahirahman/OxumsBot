@@ -6,7 +6,7 @@ module.exports = {
     execute(message, args) {
 
         if (args.length) {
-            return message.reply(`This command does not take any arguments. Please use !cctv to see the list of all camera codes.`);
+            return message.reply('This command does not take any arguments. Please use !cctv to see the list of all camera codes.');
         }
 
         // All Monument CCTV codes

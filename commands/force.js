@@ -7,7 +7,7 @@ module.exports = {
     execute(message, args) {
 
         if (args.length) {
-            return message.reply(`This command does not take any arguments. Please use !force to check when the next force wipe is.`);
+            return message.reply('This command does not take any arguments. Please use !force to check when the next force wipe is.');
         }
 
         // The force time is 11 AM PST or 7:00 pm GMT or 6 AM AEST etc
