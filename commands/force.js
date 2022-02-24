@@ -38,7 +38,7 @@ function getForceWipe(forceTime=0) {
     // Check if current date is within the first week of the current month
     if (currDate <= 7) {
         // First thursday of the current month
-        const firstThursday = getFirstThursdayDate(currMonth, forceTime);
+        const firstThursday = getFirstThursdayDate(currMonth, forceTime).getDate();
         if (currDate <= firstThursday) {
             return firstThursday;
         }
@@ -60,11 +60,11 @@ function getFirstThursdayDate(month, forceTime) {
     date.setMilliseconds(0);
 
     // Find the first thursday of the month
+    // This is due to AEST being a day ahead
     while (date.getDay() !== 4) {
         date.setDate(date.getDate() + 1);
     }
-    // This is due to AEST being a day ahead
-    //date.setDate(date.getDate() + 1);
+    
     return date;
 };
 

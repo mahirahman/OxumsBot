@@ -17,9 +17,8 @@ def get_server_info(server_id, api_key):
     server_info = requests.request("GET", url, headers=request_headers(api_key))
     return server_info
 
-def get_server_map(seed, size, api_key):
-    return None
-
-data = get_server_info(2950091, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImFmZTRkMzcxNGQ0YzlkOGIiLCJpYXQiOjE2NDAwOTAyOTIsIm5iZiI6MTY0MDA5MDI5MiwiaXNzIjoiaHR0cHM6Ly93d3cuYmF0dGxlbWV0cmljcy5jb20iLCJzdWIiOiJ1cm46dXNlcjo0OTkyNDIifQ.bm8LLVZLSkkrE3mLfH5LHY5RwfhLADayNEVlMPOMSYI")
+#servnum = 2**31-1
+#- (2**31) to + (2**31-1)
+data = get_server_info(2147483648, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImFmZTRkMzcxNGQ0YzlkOGIiLCJpYXQiOjE2NDAwOTAyOTIsIm5iZiI6MTY0MDA5MDI5MiwiaXNzIjoiaHR0cHM6Ly93d3cuYmF0dGxlbWV0cmljcy5jb20iLCJzdWIiOiJ1cm46dXNlcjo0OTkyNDIifQ.bm8LLVZLSkkrE3mLfH5LHY5RwfhLADayNEVlMPOMSYI")
 
 print(data.text)
