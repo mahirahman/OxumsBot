@@ -30,7 +30,7 @@ module.exports = {
 };
 
 // Returns the date of the next force wipe
-function getForceWipe(forceTime=0) {
+getForceWipe = (forceTime=0) => {
     const date = new Date();
     let currDate = date.getDate();
     let currMonth = date.getMonth();
@@ -47,7 +47,7 @@ function getForceWipe(forceTime=0) {
 };
 
 // Given a month, finds the first thursday of that month
-function getFirstThursdayDate(month, forceTime) {
+getFirstThursdayDate = (month, forceTime) => {
     const date = new Date();
     // Set date to first day of the given month
     date.setMonth(month);
@@ -70,7 +70,7 @@ function getFirstThursdayDate(month, forceTime) {
 
 // Convert milliseconds to days, hours, minutes and seconds
 // Source: https://stackoverflow.com/questions/8528382/javascript-show-milliseconds-as-dayshoursmins-without-seconds
-function dhm(ms) {
+dhm = (ms) =>  {
     const days = Math.floor(ms / (24*60*60*1000));
     const daysms = ms % (24*60*60*1000);
     const hours = Math.floor(daysms / (60*60*1000));

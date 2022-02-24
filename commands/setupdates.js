@@ -32,7 +32,7 @@ module.exports = {
     },
 };
 
-function postLatestNews(message, postedNews) {
+postLatestNews = (message, postedNews) => {
     (async () => {
 
         let parser = new Parser();
