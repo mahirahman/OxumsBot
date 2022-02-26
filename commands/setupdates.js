@@ -32,7 +32,7 @@ module.exports = {
     },
 };
 
-postLatestNews = (message, postedNews) => {
+const postLatestNews = (message, postedNews) => {
     (async () => {
 
         let parser = new Parser();

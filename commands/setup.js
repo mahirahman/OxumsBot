@@ -19,20 +19,22 @@ module.exports = {
         serverID = message.guild.id;
         battlemetricsID = args[0];
 
-        /*
-        IF !isValidBattlemetricsID(battlemetricsID)
+        // Check if battlemetricsID is valid
+        if (!isValidBattlemetricsID(battlemetricsID)) {
             return message.reply('Invalid battlemetrics-id. Please use the battlemetrics-id at https://battlemetrics.com/servers/rust/<battlemetrics-id>');
-
+        }
+            
+        /*
         IF serverID not in DB
                 add serverID and battlemetricsID to DB
-                return reply "Successfully linked Rust server to your discord"          
+                return reply "Successfully linked Rust server to your discord server"
         ElSE
-            find serverID in DB and check if db battlemetricsID is same as argument
+            find serverID in DB and check if db battlemetricsID is same as battlemetricsID
             if it is then
-                return reply "battlemetrics-id already linked to this server"
+                return reply "battlemetrics-id already linked to this discord server"
             else
                 update DB with new battlemetricsID
-                return reply "Successfully linked Rust server to your discord"
+                return reply "Successfully updated Rust server to your discord server"
 
         {
             serverID: '931859618710290462'
@@ -44,8 +46,8 @@ module.exports = {
     },
 };
 
-// Validates ID range, valid server and is a rust server.
-isValidBattlemetricsID = (battlemetricsID) => {
+// Validates battlemetricsID range, is a valid server and is a rust server.
+const isValidBattlemetricsID = (battlemetricsID) => {
     // Check valid ID range
     if (battlemetricsID > 0 && battlemetricsID <= 2**31-1) {
         // Check using API if battlemetrics-id is a server
