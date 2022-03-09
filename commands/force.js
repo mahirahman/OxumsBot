@@ -38,9 +38,10 @@ const getForceWipe = (forceTime=0) => {
     // Check if current date is within the first week of the current month
     if (currDate <= 7) {
         // First thursday of the current month
-        const firstThursday = getFirstThursdayDate(currMonth, forceTime).getDate();
-        if (currDate <= firstThursday) {
-            return firstThursday;
+        const firstThursdayDate = getFirstThursdayDate(currMonth, forceTime);
+        const firstThursdayDay = firstThursdayDate.getDate();
+        if (currDate <= firstThursdayDay) {
+            return firstThursdayDate;
         }
     }
     return getFirstThursdayDate(currMonth === 11 ? currMonth = 0 : currMonth = currMonth + 1, forceTime);
